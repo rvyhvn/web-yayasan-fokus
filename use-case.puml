@@ -1,0 +1,16 @@
+@startuml
+left to right direction
+
+"User" as u
+"Admin" as a
+
+u --> (Daftar Pelatihan)
+u --> (Lihat Jadwal Kegiatan)
+u --> (Chat Admin [redirect WA])
+u --> (Lihat Module Ajar PDF)
+a --> (Update Berita)
+a --> (Lihat Jadwal Kegiatan)
+a --> (Lihat Module Ajar PDF)
+
+@enduml
+
