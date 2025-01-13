@@ -1,0 +1,2 @@
+berita punya gambar (nullable)
+
