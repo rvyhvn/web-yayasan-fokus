@@ -1,3 +1,4 @@
+user terdaftar masuk ke google sheets
 berita punya gambar (nullable)
 model umkm (kontak, produk)
 yg masukkan umkm itu admin
