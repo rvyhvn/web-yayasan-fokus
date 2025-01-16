@@ -1,6 +1,8 @@
 import { Head } from '@inertiajs/react'
+import { usePage } from '@inertiajs/react'
 
 export default function Home() {
+  console.log(usePage().props)
   return (
     <>
       <Head title="Homepage" />
@@ -344,3 +346,4 @@ export default function Home() {
     </>
   )
 }
+
