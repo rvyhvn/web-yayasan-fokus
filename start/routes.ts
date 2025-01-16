@@ -7,10 +7,19 @@
 |
 */
 
-import AuthController from '#controllers/auth_controller'
+const AuthController = () => import('#controllers/auth_controller')
+const NewsController = () => import('#controllers/news_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
-router.on('/').renderInertia('home')
+
+/*
+ * Home
+ */
+router
+  .get('/', async ({ inertia }) => {
+    return inertia.render('home')
+  })
+  .use(middleware.silent())
 
 /*
  * Auth Routes
@@ -33,3 +42,14 @@ router
   })
   .as('auth')
   .prefix('/auth')
+
+/*
+ * Admin Routes
+ */
+router
+  // News Routes
+  .group(() => {
+    router.resource('news', NewsController)
+  })
+  .as('admin')
+  .prefix('/admin')

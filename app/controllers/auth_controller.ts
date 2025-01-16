@@ -9,7 +9,7 @@ export default class AuthController {
 
   async register({ request, response }: HttpContext) {
     const payload = await request.validateUsing(registerValidator)
-    await User.create({ ...payload })
+    await User.create(payload)
     return response.redirect().toRoute('/auth/login')
   }
 
