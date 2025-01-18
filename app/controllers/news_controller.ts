@@ -1,10 +1,14 @@
+import News from '#models/news'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class NewsController {
   /**
    * Display a list of resource
    */
-  async index({}: HttpContext) {}
+  async index({ inertia }: HttpContext) {
+    const news = await News.all()
+    return inertia.render('admin/news', { news: news })
+  }
 
   /**
    * Display form to create a new record
@@ -36,3 +40,4 @@ export default class NewsController {
    */
   async destroy({ params }: HttpContext) {}
 }
+

@@ -12,7 +12,7 @@ const NewsController = () => import('#controllers/news_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 
-/*
+/**
  * Home
  */
 router
@@ -21,7 +21,7 @@ router
   })
   .use(middleware.silent())
 
-/*
+/**
  * Auth Routes
  */
 router
@@ -43,13 +43,14 @@ router
   .as('auth')
   .prefix('/auth')
 
-/*
+/**
  * Admin Routes
  */
 router
   // News Routes
   .group(() => {
     router.resource('news', NewsController)
+    router.get('/export-members', () => {}).as('export-members')
   })
   .as('admin')
   .prefix('/admin')
