@@ -19,13 +19,9 @@ export default class Faq extends BaseModel {
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
-
   /**
    * Relationships
    */
   @belongsTo(() => Store)
   declare store: BelongsTo<typeof Store>
 }
-

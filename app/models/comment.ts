@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import User from './user.js'
+import Store from './store.js'
 
 export default class Comment extends BaseModel {
   @column({ isPrimary: true })
@@ -9,6 +10,9 @@ export default class Comment extends BaseModel {
 
   @column()
   declare posterId: number
+
+  @column()
+  declare storeId: number
 
   @column()
   declare content: string
@@ -26,5 +30,7 @@ export default class Comment extends BaseModel {
     foreignKey: 'posterId',
   })
   declare poster: BelongsTo<typeof User>
-}
 
+  @belongsTo(() => Store)
+  declare store: BelongsTo<typeof Store>
+}

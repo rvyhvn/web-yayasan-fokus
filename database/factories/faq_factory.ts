@@ -9,4 +9,3 @@ export const FaqFactory = factory
     }
   })
   .build()
-

@@ -6,7 +6,7 @@ export const NewsFactory = factory
     const hasImage = faker.helpers.arrayElement([true, false])
     return {
       title: faker.lorem.sentence(),
-      body: faker.lorem.paragraphs({ min: 0, max: 3 }),
+      content: faker.lorem.paragraphs({ min: 0, max: 3 }),
       imageUrl: hasImage ? 'https://placehold.co/600x400' : null,
     }
   })

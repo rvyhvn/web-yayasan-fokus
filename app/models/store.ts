@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
-import Faq from './faq.js'
+import Faq from '#models/faq'
+import Comment from '#models/comment'
 
 export default class Store extends BaseModel {
   @column({ isPrimary: true })
@@ -27,4 +28,7 @@ export default class Store extends BaseModel {
    */
   @hasMany(() => Faq)
   declare faqs: HasMany<typeof Faq>
+
+  @hasMany(() => Comment)
+  declare comments: HasMany<typeof Comment>
 }

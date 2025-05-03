@@ -11,4 +11,3 @@ export const StoreFactory = factory
   })
   .relation('faqs', () => FaqFactory)
   .build()
-
