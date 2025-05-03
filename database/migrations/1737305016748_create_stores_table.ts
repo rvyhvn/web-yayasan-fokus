@@ -1,16 +1,17 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'news'
+  protected tableName = 'stores'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.string('title').notNullable()
-      table.text('content').notNullable()
-      table.text('thumbnail_url').nullable()
-      table.string('image_url').nullable()
+      table.string('name').notNullable()
+      table.string('address').notNullable()
+      table.boolean('is_promoted').notNullable().defaultTo(false)
+
       table.timestamp('created_at')
+      table.timestamp('updated_at')
     })
   }
 

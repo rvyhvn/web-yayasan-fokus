@@ -9,7 +9,10 @@ export default class News extends BaseModel {
   declare title: string
 
   @column()
-  declare body: string
+  declare content: string
+
+  @column()
+  declare thumbnailUrl: string | null
 
   @column()
   declare imageUrl: string | null
@@ -20,4 +23,3 @@ export default class News extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 }
-

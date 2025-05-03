@@ -1,14 +1,12 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
-  protected tableName = 'local_businesses'
+  protected tableName = 'store_comments'
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.integer('store_id').references('stores.id')
+      table.integer('comment_id').references('comments.id')
     })
   }
 
@@ -16,3 +14,4 @@ export default class extends BaseSchema {
     this.schema.dropTable(this.tableName)
   }
 }
+

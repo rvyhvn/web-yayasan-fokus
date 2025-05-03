@@ -13,7 +13,6 @@ export default class extends BaseSchema {
       table.boolean('is_admin').notNullable().defaultTo(false)
 
       table.timestamp('created_at').notNullable()
-      table.timestamp('updated_at').nullable()
     })
   }
 
