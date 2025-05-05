@@ -1,13 +1,13 @@
-import News from '#models/news'
+import Store from '#models/store'
 import type { HttpContext } from '@adonisjs/core/http'
 
-export default class NewsController {
+export default class StoresController {
   /**
    * Display a list of resource
    */
   async index({ inertia }: HttpContext) {
-    const news = await News.all()
-    return inertia.render('news', { news })
+    const smes = await Store.all()
+    return inertia.render('smes', { smes })
   }
 
   /**
@@ -24,13 +24,18 @@ export default class NewsController {
    * Show individual record
    */
   async show({ params, inertia }: HttpContext) {
-    const article = await News.query().where('id', params.id).firstOrFail()
+    const sme = await Store.query()
+      .where('id', params.id)
+      .preload('faqs')
+      .preload('products')
+      .preload('comments', (comments) => comments.preload('poster'))
+      .firstOrFail()
 
-    const recommendations = await News.query()
+    const recommendations = await Store.query()
       .whereNot('id', params.id)
       .orderByRaw('RANDOM()')
       .limit(3)
-    return inertia.render('news/show', { article, recommendations })
+    return inertia.render('smes/show', { sme, recommendations })
   }
 
   /**

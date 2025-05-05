@@ -7,11 +7,14 @@
 |
 */
 
-const AuthController = () => import('#controllers/auth_controller')
-const NewsController = () => import('#controllers/news_controller')
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
-import UsersController from '#controllers/users_controller'
+
+const AuthController = () => import('#controllers/auth_controller')
+const NewsController = () => import('#controllers/news_controller')
+const ProgramsController = () => import('#controllers/programs_controller')
+const StoresController = () => import('#controllers/stores_controller')
+const CommentsController = () => import('#controllers/comments_controller')
 
 /**
  * Home
@@ -44,16 +47,10 @@ router
   .as('auth')
   .prefix('/auth')
 
-/**
- * Admin Routes
- */
-router
-  // News Routes
-  .group(() => {
-    router.resource('news', NewsController)
-    router.get('', [UsersController, 'index']).as('index.users')
-    router.post('/export-members', [UsersController, 'exportMembers']).as('export-members')
-  })
-  .as('admin')
-  .prefix('/admin')
-  .use(middleware.admin())
+router.resource('programs', ProgramsController)
+
+router.resource('smes', StoresController).only(['index', 'show'])
+
+router.resource('smes.comments', CommentsController)
+
+router.resource('news', NewsController)

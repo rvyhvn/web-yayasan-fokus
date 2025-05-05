@@ -3,6 +3,7 @@ import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Faq from '#models/faq'
 import Comment from '#models/comment'
+import Product from './product.js'
 
 export default class Store extends BaseModel {
   @column({ isPrimary: true })
@@ -13,6 +14,9 @@ export default class Store extends BaseModel {
 
   @column()
   declare address: string
+
+  @column()
+  declare description: string
 
   @column()
   declare isPromoted: boolean
@@ -31,4 +35,7 @@ export default class Store extends BaseModel {
 
   @hasMany(() => Comment)
   declare comments: HasMany<typeof Comment>
+
+  @hasMany(() => Product)
+  declare products: HasMany<typeof Product>
 }

@@ -1,6 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 
-export default class LocalBusinessesController {
+export default class CommentsController {
   /**
    * Display a list of resource
    */

@@ -10,17 +10,15 @@ export default class UsersController {
 
   async exportMembers({ request, response }: HttpContext) {
     const excelService = new ExcelSheetService()
-    const whereClause = request.input('where') // Optional: Get filter from request
-    const params = request.input('params', []) // Optional: Get parameters for the where clause
+    const whereClause = request.input('where')
+    const params = request.input('params', [])
 
-    // Configure export options
     const exportOptions = {
       whereClause,
       params,
-      filename: 'members_export.xlsx', // You can customize the filename
+      filename: 'members_export.xlsx',
     }
 
-    // Export the data
     const filename = await excelService.exportToXlsx('users', exportOptions)
 
     return response.download(filename)
