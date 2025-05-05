@@ -7,7 +7,7 @@ export default class NewsController {
    */
   async index({ inertia }: HttpContext) {
     const news = await News.all()
-    return inertia.render('admin/news', { news: news })
+    return inertia.render('news', { news })
   }
 
   /**
@@ -23,7 +23,15 @@ export default class NewsController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, inertia }: HttpContext) {
+    const article = await News.query().where('id', params.id).firstOrFail()
+
+    const recommendations = await News.query()
+      .whereNot('id', params.id)
+      .orderByRaw('RANDOM()')
+      .limit(3)
+    return inertia.render('news/show', { article, recommendations })
+  }
 
   /**
    * Edit individual record
@@ -40,4 +48,3 @@ export default class NewsController {
    */
   async destroy({ params }: HttpContext) {}
 }
-

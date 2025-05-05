@@ -1,6 +1,7 @@
 import factory from '@adonisjs/lucid/factories'
 import User from '#models/user'
 import validator from 'validator'
+import { CommentFactory } from './comment_factory.js'
 
 export const UserFactory = factory
   .define(User, async ({ faker }) => {
@@ -16,5 +17,5 @@ export const UserFactory = factory
       isAdmin: false,
     }
   })
+  .relation('comments', () => CommentFactory)
   .build()
-
