@@ -49,8 +49,8 @@ router
 
 router.resource('programs', ProgramsController)
 
-router.resource('smes', StoresController).only(['index', 'show'])
+router.resource('smes', StoresController).only(['index', 'show']).use(['show'], middleware.silent())
 
-router.resource('smes.comments', CommentsController)
+router.resource('smes.comments', CommentsController).use(['store'], middleware.auth())
 
 router.resource('news', NewsController)

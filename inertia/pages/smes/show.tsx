@@ -1,10 +1,11 @@
-import { Head, Link } from '@inertiajs/react'
+import { Head, Link, usePage, useForm } from '@inertiajs/react'
 import Layout from '~/layouts/layout'
 
 import type Store from '#models/store'
 import type Faq from '#models/faq'
 import type Comment from '#models/comment'
 import type Product from '#models/product'
+import React from 'react'
 
 type Props = {
   sme: Store & {
@@ -13,9 +14,23 @@ type Props = {
     products: Product[]
   }
   recommendations: Store[]
+  isAuth: boolean
 }
 
 export default function Show({ sme, recommendations }: Props) {
+  const { isAuth } = usePage().props
+
+  console.log(isAuth)
+  const { data, setData, post, processing, errors } = useForm({
+    comment: '',
+    stars: null as unknown as number,
+  })
+
+  function submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    post(`/smes/${sme.id}/comments`)
+  }
+
   return (
     <>
       <Head title={sme.name} />
@@ -71,7 +86,7 @@ export default function Show({ sme, recommendations }: Props) {
               {/* Comments */}
               <section>
                 <h2 className="text-2xl font-semibold mb-4 text-black">Ulasan</h2>
-                <div className="space-y-4">
+                <div className="space-y-4 mb-6">
                   {sme.comments.map((comment) => (
                     <div key={comment.id} className="border p-4 rounded-lg shadow-sm bg-gray-50">
                       <div className="flex justify-between items-center mb-2">
@@ -84,6 +99,51 @@ export default function Show({ sme, recommendations }: Props) {
                     </div>
                   ))}
                 </div>
+
+                {isAuth ? (
+                  <form onSubmit={submit} className="space-y-4">
+                    <textarea
+                      value={data.comment}
+                      onChange={(e) => setData('comment', e.target.value)}
+                      className="w-full border rounded p-2 text-black"
+                      rows={4}
+                      placeholder="Tulis ulasan Anda..."
+                    />
+                    {errors.comment && <p className="text-red-600 text-sm">{errors.comment}</p>}
+                    <div>
+                      <label className="block mb-1 text-sm font-medium text-gray-700">Rating</label>
+                      <select
+                        value={data.stars ?? ''}
+                        onChange={(e) => setData('stars', Number(e.target.value))}
+                        className="border rounded p-2 w-full text-black"
+                      >
+                        <option value="" disabled>
+                          Pilih rating
+                        </option>
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <option key={star} value={star}>
+                            {'⭐'.repeat(star)} ({star})
+                          </option>
+                        ))}
+                      </select>
+                      {errors.stars && <p className="text-red-600 text-sm">{errors.stars}</p>}
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={processing}
+                      className="px-4 py-2 bg-red-700 text-white rounded hover:bg-red-800"
+                    >
+                      Kirim Ulasan
+                    </button>
+                  </form>
+                ) : (
+                  <Link
+                    href="/auth/login"
+                    className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                  >
+                    Login untuk memberi ulasan
+                  </Link>
+                )}
               </section>
             </div>
 

@@ -1,3 +1,5 @@
+import { usePage, Link } from '@inertiajs/react'
+
 const navItems = [
   { label: 'Beranda', href: '/' },
   { label: 'Program', href: '/programs' },
@@ -8,6 +10,8 @@ const navItems = [
 const pathname = window.location.pathname
 
 export default function Header() {
+  const { isAuth } = usePage().props
+
   return (
     <div className="drawer">
       <input id="drawer-toggle" type="checkbox" className="drawer-toggle" />
@@ -19,7 +23,7 @@ export default function Header() {
               <span className="ml-2 text-red-700 font-bold text-xl">FOKUS</span>
             </a>
 
-            <nav className="hidden md:flex space-x-6">
+            <nav className="hidden md:flex items-center space-x-6">
               {navItems.map((item) => (
                 <a
                   key={item.href}
@@ -31,6 +35,24 @@ export default function Header() {
                   {item.label}
                 </a>
               ))}
+
+              {isAuth ? (
+                <Link
+                  href="/auth/logout"
+                  method="post"
+                  as="button"
+                  className="text-red-700 hover:text-red-800 font-semibold"
+                >
+                  Logout
+                </Link>
+              ) : (
+                <Link
+                  href="/auth/login"
+                  className="text-blue-600 hover:text-blue-800 font-semibold"
+                >
+                  Login
+                </Link>
+              )}
             </nav>
 
             <label htmlFor="drawer-toggle" className="btn btn-ghost md:hidden">
@@ -55,7 +77,7 @@ export default function Header() {
 
       <div className="drawer-side">
         <label htmlFor="drawer-toggle" className="drawer-overlay"></label>
-        <ul className="menu p-4 w-64 bg-white text-base-content h-full">
+        <ul className="menu p-4 w-64 bg-white text-base-content h-full space-y-2">
           {navItems.map((item) => (
             <li key={item.href}>
               <a
@@ -68,6 +90,23 @@ export default function Header() {
               </a>
             </li>
           ))}
+
+          <li>
+            {isAuth ? (
+              <Link
+                href="/auth/logout"
+                method="post"
+                as="button"
+                className="text-red-700 hover:text-red-800 font-semibold"
+              >
+                Logout
+              </Link>
+            ) : (
+              <Link href="/auth/login" className="text-blue-600 hover:text-blue-800 font-semibold">
+                Login
+              </Link>
+            )}
+          </li>
         </ul>
       </div>
     </div>
