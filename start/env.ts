@@ -24,4 +24,13 @@ export default await Env.create(new URL('../', import.meta.url), {
   |----------------------------------------------------------
   */
   SESSION_DRIVER: Env.schema.enum(['cookie', 'memory'] as const),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for ImageKit
+  |----------------------------------------------------------
+  */
+  IMAGEKIT_URL_ENDPOINT: Env.schema.string(),
+  IMAGEKIT_PUBLIC_KEY: Env.schema.string(),
+  IMAGEKIT_PRIVATE_KEY: Env.schema.string()
 })

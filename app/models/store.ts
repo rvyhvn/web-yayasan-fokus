@@ -19,6 +19,27 @@ export default class Store extends BaseModel {
   declare description: string
 
   @column()
+  declare logoUrl: string | null
+
+  @column()
+  declare storeImageUrl: string | null
+
+  @column()
+  declare instagram: string | null
+
+  @column()
+  declare tiktok: string | null
+
+  @column()
+  declare shopee: string | null
+
+  @column()
+  declare facebook: string | null
+
+  @column()
+  declare whatsapp: string | null
+
+  @column()
   declare isPromoted: boolean
 
   @column.dateTime({ autoCreate: true })

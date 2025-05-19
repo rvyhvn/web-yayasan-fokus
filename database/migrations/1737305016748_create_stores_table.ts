@@ -9,6 +9,13 @@ export default class extends BaseSchema {
       table.string('name').notNullable()
       table.string('address').notNullable()
       table.string('description').notNullable()
+      table.text('logo_url').nullable()
+      table.text('store_image_url').nullable()
+      table.string('instagram').nullable()
+      table.string('tiktok').nullable()
+      table.string('shopee').nullable()
+      table.string('facebook').nullable()
+      table.string('whatsapp').nullable()
       table.boolean('is_promoted').notNullable().defaultTo(false)
 
       table.timestamp('created_at')
