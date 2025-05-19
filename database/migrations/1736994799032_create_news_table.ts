@@ -10,6 +10,7 @@ export default class extends BaseSchema {
       table.text('content').notNullable()
       table.text('thumbnail_url').nullable()
       table.string('image_url').nullable()
+      table.boolean('is_pinned').notNullable().defaultTo(false)
       table.timestamp('created_at')
     })
   }

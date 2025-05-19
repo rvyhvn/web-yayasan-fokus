@@ -17,6 +17,9 @@ export default class News extends BaseModel {
   @column()
   declare imageUrl: string | null
 
+  @column()
+  declare isPinned: boolean
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 }

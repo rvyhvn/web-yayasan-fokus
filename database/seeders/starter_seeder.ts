@@ -4,6 +4,7 @@ import User from '#models/user'
 import { NewsFactory } from '#database/factories/news_factory'
 import { StoreFactory } from '#database/factories/store_factory'
 import { CommentFactory } from '#database/factories/comment_factory'
+import News from '#models/news'
 
 export default class extends BaseSeeder {
   async run() {
@@ -25,6 +26,12 @@ export default class extends BaseSeeder {
     })
 
     await NewsFactory.createMany(10)
+
+    await News.create({
+      title: 'Cara membuat teh',
+      content: 'lorem ipsum;',
+      isPinned: true,
+    })
 
     const stores = await StoreFactory.with('faqs', 8).with('products', 10).createMany(10)
 
