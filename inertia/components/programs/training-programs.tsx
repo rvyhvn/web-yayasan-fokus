@@ -2,32 +2,32 @@ export default function TrainingPrograms() {
   const programs = [
     {
       title: 'Pelatihan Sablon',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere.',
+      desc: 'Pelatihan teknik sablon untuk meningkatkan kualitas produk UMKM.',
       logo: 'https://placehold.co/200',
     },
     {
       title: 'Pelatihan Pendataan',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pasuere.',
+      desc: 'Pelatihan pendataan untuk mengelola informasi usaha yang lebih baik.',
       logo: 'https://placehold.co/200',
     },
     {
       title: 'Pelatihan Digitalisasi',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere.',
+      desc: 'Pelatihan digitalisasi untuk meningkatkan kehadiran online UMKM.',
       logo: 'https://placehold.co/200',
     },
     {
       title: 'Manajemen Keuangan',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere.',
+      desc: 'Pelatihan manajemen keuangan untuk pengelolaan keuangan yang lebih efektif.',
       logo: 'https://placehold.co/200',
     },
     {
       title: 'Manajemen Bisnis',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere.',
+      desc: 'Pelatihan manajemen bisnis untuk strategi pengembangan usaha.',
       logo: 'https://placehold.co/200',
     },
     {
       title: 'Kreatifitas',
-      desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere.',
+      desc: 'Pelatihan kreativitas untuk inovasi produk dan layanan.',
       logo: 'https://placehold.co/200',
     },
   ]

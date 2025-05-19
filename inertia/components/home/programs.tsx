@@ -4,8 +4,8 @@ export default function Programs() {
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          <div className="lg:w-1/2 w-full">
             <img
               src={impactImage}
               alt="Grandmother and granddaughter laughing together while playing on the grass"
@@ -15,36 +15,27 @@ export default function Programs() {
             />
           </div>
 
-          <div className="md:w-1/2">
-            <div className="flex flex-row items-center gap-10">
-              <p className="w-1/2 flex flex-col text-red-700 font-extrabold text-8xl">
-                12{' '}
-                <span className="text-3xl font-bold">
-                  Jenis
-                  <br />
-                  Program
-                </span>
-              </p>
-              <p className="w-2/3 text-black text-justify">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut ea hic quam odio,
-                repellendus libero dolore, nostrum pariatur sed veniam modi doloremque mollitia
-                facere reprehenderit quis! Id exercitationem alias aperiam?
+          <div className="lg:w-1/2 w-full">
+            {/* First Stats Block */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 lg:gap-10">
+              <div className="w-full sm:w-1/2 flex flex-col text-red-700 font-extrabold text-6xl sm:text-7xl lg:text-8xl">
+                12 <span className="text-2xl sm:text-3xl font-bold">Jenis Program</span>
+              </div>
+              <p className="w-full sm:w-1/2 text-black text-justify text-base sm:text-lg">
+                Kami memiliki berbagai jenis program pelatihan, inkubasi, dan kolaborasi untuk
+                mendukung pengembangan pelaku UMKM di Balikpapan.
               </p>
             </div>
-            <div className="flex flex-row items-center gap-10 mt-6">
-              <p className="w-1/2 text-black text-justify">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut ea hic quam odio,
-                repellendus libero dolore, nostrum pariatur sed veniam modi doloremque mollitia
-                facere reprehenderit quis! Id exercitationem alias aperiam?
+
+            {/* Second Stats Block */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 lg:gap-10 mt-6">
+              <p className="w-full sm:w-1/2 text-black text-justify text-base sm:text-lg order-2 sm:order-1">
+                Kami telah memberdayakan lebih dari 40 UMKM melalui pendampingan, pelatihan, dan
+                akses ke jaringan pemasaran dan permodalan.
               </p>
-              <p className="w-1/2 flex flex-col text-red-700 font-extrabold text-8xl">
-                47{' '}
-                <span className="text-3xl font-bold">
-                  Pemberdayaan
-                  <br />
-                  UMKM
-                </span>
-              </p>
+              <div className="w-full sm:w-1/2 flex flex-col text-red-700 font-extrabold text-6xl sm:text-7xl lg:text-8xl order-1 sm:order-2">
+                47 <span className="text-2xl sm:text-3xl font-bold">Pemberdayaan UMKM</span>
+              </div>
             </div>
           </div>
         </div>

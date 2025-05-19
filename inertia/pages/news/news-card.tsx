@@ -4,19 +4,15 @@ import type News from '#models/news'
 export default function NewsCard({ article }: { article: News }) {
   return (
     <div className="card shadow-sm hover:shadow-lg transition-shadow duration-300">
-      <figure className="px-4 pt-4">
-        {article.imageUrl ? (
+      {article.imageUrl && (
+        <figure className="px-4 pt-4">
           <img
             src={article.imageUrl}
             alt={article.title}
             className="rounded-lg h-48 w-full object-cover"
           />
-        ) : (
-          <div className="bg-gray-200 h-48 w-full rounded-lg flex items-center justify-center">
-            <span className="text-gray-400">No image</span>
-          </div>
-        )}
-      </figure>
+        </figure>
+      )}
       <div className="card-body">
         <Link href={`/news/${article.id}`}>
           <h2 className="card-title text-red-700 hover:text-primary-focus transition-colors">
