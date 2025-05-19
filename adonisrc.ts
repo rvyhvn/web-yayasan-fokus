@@ -41,6 +41,10 @@ export default defineConfig({
     {
       file: () => import('@adminjs/adonis/adminjs_provider'),
       environment: ['web'],
+    },
+    {
+      file: () => import('adonisjs-imagekit/imagekit_provider'),
+      environment: ['web'],
     }
   ],
 

@@ -10,6 +10,7 @@ export default class extends BaseSchema {
       table.enu('category', ['makanan', 'barang']).nullable()
       table.string('name').notNullable()
       table.string('price').notNullable()
+      table.text('image_url').nullable()
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
@@ -20,4 +21,3 @@ export default class extends BaseSchema {
     this.schema.dropTable(this.tableName)
   }
 }
-

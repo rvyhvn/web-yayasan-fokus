@@ -19,6 +19,9 @@ export default class Product extends BaseModel {
   @column()
   declare price: string
 
+  @column()
+  declare imageUrl: string | null
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
@@ -31,4 +34,3 @@ export default class Product extends BaseModel {
   @belongsTo(() => Store)
   declare store: BelongsTo<typeof Store>
 }
-
