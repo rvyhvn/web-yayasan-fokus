@@ -33,7 +33,7 @@ export default class extends BaseSeeder {
       isPinned: true,
     })
 
-    const stores = await StoreFactory.with('faqs', 8).with('products', 10).createMany(10)
+    const stores = await StoreFactory.with('faqs', 8).with('products', 10).createMany(40)
 
     for (const store of stores) {
       const user = await User.query().orderByRaw('RANDOM()').firstOrFail()
