@@ -1,23 +1,25 @@
-import { useRef, useState } from 'react'
+import slide1 from '../../public/images/slider-umkm.jpg'
+import slide2 from '../../public/images/slider-2.jpg'
+import slide3 from '../../public/images/slider-3.jpg'
 
 const carouselItems = [
   {
     id: 'slide1',
-    img: 'https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp',
+    img: slide1,
     title: 'Pelatihan Untuk Mengembangkan UMKM',
     text: 'Kami memberikan pelatihan untuk mengembangkan keterampilan pelaku UMKM',
     button: 'Program Kami',
   },
   {
     id: 'slide2',
-    img: 'https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp',
+    img: slide2,
     title: 'Dampingi UMKM Naik Kelas Bersama FOKUS',
     text: 'Kami hadir untuk membantu UMKM agar lebih siap bersaing dan berkembang secara berkelanjutan',
     button: 'Program Kami',
   },
   {
     id: 'slide3',
-    img: 'https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp',
+    img: slide3,
     title: 'Membangun Jejaring UMKM di Seluruh Indonesia',
     text: 'Mendukung pemberdayaan pelaku usaha lokal melalui komunitas dan pendampingan',
     button: 'Program Kami',
