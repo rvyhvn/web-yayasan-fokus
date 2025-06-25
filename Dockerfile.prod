@@ -33,28 +33,27 @@ RUN apk update && \
 
 # Copy production dependencies and build output
 COPY --from=production-deps /app/node_modules /app/build/node_modules
-COPY --from=build /app/build /app/
+COPY --from=build /app/build /app/build/
 COPY --from=build /app/.env /app/
+COPY --from=build /app/.env /app/build/
 COPY --from=build /app/inertia /app/build/
 COPY --from=build /app/tailwind.config.js /app/build/
 
-# Create directory for SQLite database
-RUN mkdir -p /app/database
+# Copy the entire app structure (needed for refresh.sh git operations)
+COPY --from=build /app /app/
 
-# Make scripts executable (if they exist)
-RUN if [ -f start.sh ]; then chmod +x start.sh; fi
-RUN if [ -f refresh.sh ]; then chmod +x refresh.sh; fi
+# Copy scripts and make them executable
+COPY --from=build /app/start.sh /app/refresh.sh ./
+RUN chmod +x start.sh refresh.sh
 
-# Create a simple start script if it doesn't exist
-RUN if [ ! -f start.sh ]; then \
-    echo '#!/bin/sh' > start.sh && \
-    echo 'cd /app' >> start.sh && \
-    echo 'pm2-runtime start ecosystem.config.js --env production' >> start.sh && \
-    chmod +x start.sh; \
-    fi
+# Create directory for SQLite database and logs
+RUN mkdir -p /app/database /var/log
+
+# Create cron log file
+RUN touch /var/log/cron.log
 
 # Expose the port
 EXPOSE 3333
 
 # Run the application
-CMD ["./start.sh"]
+CMD ["sh", "./start.sh"]

@@ -12,9 +12,16 @@ services:
     volumes:
       # Mount SQLite database directory to persist data
       - sqlite_data:/app/database
+      # Mount logs directory to access cron logs
+      - logs_data:/var/log
+      # Optional: Mount git directory if you want to preserve git history
+      # - ./.git:/app/.git:ro
     networks:
       - app-network
     restart: unless-stopped
+    # Keep container running even if main process exits
+    tty: true
+    stdin_open: true
 
   nginx:
     image: nginx:alpine
@@ -36,3 +43,4 @@ networks:
 
 volumes:
   sqlite_data:
+  logs_data:
