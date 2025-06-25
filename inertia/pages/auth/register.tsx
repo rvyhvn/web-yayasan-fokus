@@ -91,6 +91,13 @@ export default function Register() {
                 masuk di sini
               </a>
             </div>
+
+            <div className="text-xs text-center text-gray-500 mt-4">
+              Dengan mendaftar, Anda menyetujui{' '}
+              <a href="/privacy" className="underline hover:text-red-700">
+                Kebijakan Privasi
+              </a>
+            </div>
           </form>
         </div>
       </div>
