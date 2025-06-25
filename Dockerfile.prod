@@ -26,34 +26,43 @@ ENV NODE_ENV=production
 ENV TZ=UTC
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies including cron
 RUN apk update && \
-    apk add --no-cache vim git sqlite && \
+    apk add --no-cache vim git sqlite dcron && \
     npm i -g pm2
 
-# Copy production dependencies and build output
-COPY --from=production-deps /app/node_modules /app/build/node_modules
-COPY --from=build /app/build /app/build/
-COPY --from=build /app/.env /app/
-COPY --from=build /app/.env /app/build/
-COPY --from=build /app/inertia /app/build/
-COPY --from=build /app/tailwind.config.js /app/build/
-
-# Copy the entire app structure (needed for refresh.sh git operations)
-COPY --from=build /app /app/
-
-# Copy scripts and make them executable
-COPY --from=build /app/start.sh /app/refresh.sh ./
-RUN chmod +x start.sh refresh.sh
-
-# Create directory for SQLite database and logs
+# Create necessary directories
 RUN mkdir -p /app/database /var/log
 
-# Create cron log file
-RUN touch /var/log/cron.log
+# Copy the entire source (needed for refresh.sh git operations)
+COPY --from=build /app /app/
+
+# Copy production node_modules to build directory
+COPY --from=production-deps /app/node_modules /app/build/node_modules
+
+# Ensure scripts are executable
+RUN chmod +x /app/start.sh /app/refresh.sh 2>/dev/null || true
+
+# Create symlinks for easy access
+RUN ln -sf /app/start.sh ./start.sh
+RUN ln -sf /app/refresh.sh ./refresh.sh
+
+# Copy crontab and set it up
+COPY crontab /tmp/crontab
+RUN crontab /tmp/crontab && rm /tmp/crontab
+
+# Create cron log file and startup script
+RUN touch /var/log/cron.log && \
+    mkdir -p /var/spool/cron/crontabs
+
+# Create a startup script that runs both cron and the app
+RUN echo '#!/bin/sh' > /app/startup.sh && \
+    echo 'crond -b -L /var/log/cron.log' >> /app/startup.sh && \
+    echo 'exec sh /app/start.sh' >> /app/startup.sh && \
+    chmod +x /app/startup.sh
 
 # Expose the port
 EXPOSE 3333
 
-# Run the application
-CMD ["sh", "./start.sh"]
+# Run the application with cron
+CMD ["sh", "/app/startup.sh"]
