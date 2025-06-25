@@ -1,4 +1,5 @@
 import { usePage, Link } from '@inertiajs/react'
+import fokusLogo from '../public/images/logo-fokus.png'
 
 const navItems = [
   { label: 'Beranda', href: '/' },
@@ -20,7 +21,7 @@ export default function Header() {
         <header className="bg-white shadow-md navbar">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="/" className="link link-hover flex font-bold items-center">
-              <span className="ml-2 text-red-700 font-bold text-xl">FOKUS</span>
+              <img src={fokusLogo} alt="logo fokus" className="h-20 w-auto" />
             </a>
 
             <nav className="hidden md:flex items-center space-x-6">
@@ -46,10 +47,7 @@ export default function Header() {
                   Logout
                 </Link>
               ) : (
-                <Link
-                  href="/auth/login"
-                  className="text-blue-600 hover:text-blue-800 font-semibold"
-                >
+                <Link href="/auth/login" className="text-red-700 hover:text-black font-semibold">
                   Login
                 </Link>
               )}
@@ -102,7 +100,7 @@ export default function Header() {
                 Logout
               </Link>
             ) : (
-              <Link href="/auth/login" className="text-blue-600 hover:text-blue-800 font-semibold">
+              <Link href="/auth/login" className="text-red-700 hover:text-black font-semibold">
                 Login
               </Link>
             )}

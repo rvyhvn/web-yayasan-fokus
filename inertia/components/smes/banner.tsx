@@ -1,7 +1,6 @@
-export default function Banner() {
-  const img = 'https://placehold.co/1200x300'
-  const mobileImg = 'https://placehold.co/600x600'
+import bannerImg from '../../public/images/program.png'
 
+export default function Banner() {
   return (
     <section className="bg-white">
       <div className="relative w-full">
@@ -10,7 +9,7 @@ export default function Banner() {
           {' '}
           {/* 1:1 aspect ratio container */}
           <img
-            src={mobileImg}
+            src={bannerImg}
             alt="Pemberdayaan UMKM Lokal"
             className="absolute inset-0 w-full h-full object-cover rounded-lg"
           />
@@ -25,7 +24,7 @@ export default function Banner() {
         {/* Desktop - Wide Banner (1200x300) */}
         <div className="hidden md:block relative">
           <img
-            src={img}
+            src={bannerImg}
             alt="Pemberdayaan UMKM Lokal"
             className="w-full h-auto rounded-lg"
             width="1200"

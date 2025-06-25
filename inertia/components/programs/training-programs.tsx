@@ -1,3 +1,5 @@
+import businessMgImg from '../../public/icons/business-management.png'
+
 export default function TrainingPrograms() {
   const programs = [
     {
@@ -23,7 +25,7 @@ export default function TrainingPrograms() {
     {
       title: 'Manajemen Bisnis',
       desc: 'Pelatihan manajemen bisnis untuk strategi pengembangan usaha.',
-      logo: 'https://placehold.co/200',
+      logo: businessMgImg,
     },
     {
       title: 'Kreatifitas',

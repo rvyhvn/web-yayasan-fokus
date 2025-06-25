@@ -11,24 +11,20 @@ const carouselItems = [
   {
     id: 'slide2',
     img: 'https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp',
-    title: 'Second Slide',
-    text: 'This is the second slide content',
-    button: 'Get Started',
+    title: 'Dampingi UMKM Naik Kelas Bersama FOKUS',
+    text: 'Kami hadir untuk membantu UMKM agar lebih siap bersaing dan berkembang secara berkelanjutan',
+    button: 'Program Kami',
+  },
+  {
+    id: 'slide3',
+    img: 'https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp',
+    title: 'Membangun Jejaring UMKM di Seluruh Indonesia',
+    text: 'Mendukung pemberdayaan pelaku usaha lokal melalui komunitas dan pendampingan',
+    button: 'Program Kami',
   },
 ]
 
 export default function Hero() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const videoRef = useRef(null)
-
-  const handleClose = () => {
-    setIsModalOpen(false)
-    videoRef.current?.contentWindow?.postMessage(
-      '{"event":"command","func":"pauseVideo","args":""}',
-      '*'
-    )
-  }
-
   return (
     <section className="bg-white pb-20">
       <div className="carousel w-full">
