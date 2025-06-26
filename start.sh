@@ -2,4 +2,4 @@
 
 cd build;
 node ace migration:run --force;
-pm2 start ./bin/server.js
+pm2-runtime start ./bin/server.js
