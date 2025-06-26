@@ -1,1 +1,1 @@
-0 * * * * /app/refresh.sh
+0 2 * * * /app/refresh.sh
