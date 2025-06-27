@@ -1,13 +1,13 @@
-export default function Programs() {
-  const impactImage = 'https://placehold.co/600x400'
+import impactImg from '../../public/images/dayak-warrior.jpg'
 
+export default function Programs() {
   return (
     <section className="bg-white py-8">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           <div className="lg:w-1/2 w-full">
             <img
-              src={impactImage}
+              src={impactImg}
               alt="Grandmother and granddaughter laughing together while playing on the grass"
               className="rounded-lg shadow-xl w-full"
               width={600}
