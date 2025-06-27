@@ -10,8 +10,8 @@ services:
     ports:
       - '3333:3333'
     volumes:
-      # Mount tmp directory where SQLite file is actually stored
-      - sqlite_tmp_data:/app/build/tmp
+      # Mount database directory where SQLite file is actually stored
+      - sqlite_data:/database
       # Mount logs directory to access cron logs
       - logs_data:/var/log
       # Optional: Mount git directory if you want to preserve git history
@@ -28,5 +28,5 @@ networks:
     driver: bridge
 
 volumes:
-  sqlite_tmp_data:
+  sqlite_data:
   logs_data:

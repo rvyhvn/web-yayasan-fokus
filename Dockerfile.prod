@@ -35,7 +35,6 @@ COPY --from=build /app /app
 COPY --from=build /app/.env /app
 COPY --from=build /app/.env /app/build
 COPY --from=build /app/inertia /app/build
-RUN mkdir -p /app/build/tmp
 RUN chmod +x start.sh refresh.sh
 
 # Setup crontab
@@ -47,6 +46,8 @@ RUN touch /var/log/cron.log
 
 # Expose the port your application will run on
 EXPOSE 3333
+
+RUN mkdir -p /database
 
 # Run the application
 CMD ["./start.sh"]
