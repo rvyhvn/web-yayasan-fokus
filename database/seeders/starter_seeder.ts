@@ -7,7 +7,10 @@ import { CommentFactory } from '#database/factories/comment_factory'
 import News from '#models/news'
 
 export default class extends BaseSeeder {
+  static environment: string[] = ['development', 'testing']
+
   async run() {
+    console.log('Running starter seeder')
     await UserFactory.createMany(20)
 
     await User.create({
