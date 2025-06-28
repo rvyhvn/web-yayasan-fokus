@@ -7,8 +7,7 @@ export const registerValidator = vine.compile(
       .string()
       .mobile({ locale: ['id-ID'] })
       .trim()
-      .minLength(10)
-      .maxLength(13),
+      .minLength(10),
     email: vine
       .string()
       .trim()
