@@ -1,3 +1,5 @@
+import { Link } from '@inertiajs/react'
+
 import slide1 from '../../public/images/slider-umkm.jpg'
 import slide2 from '../../public/images/slider-2.jpg'
 import slide3 from '../../public/images/slider-3.jpg'
@@ -36,7 +38,9 @@ export default function Hero() {
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center p-6">
               <h2 className="text-3xl font-bold mb-2">{item.title}</h2>
               <p className="mb-4">{item.text}</p>
-              <button className="btn btn-outline">{item.button}</button>
+              <Link href="/programs" className="btn btn-outline">
+                {item.button}
+              </Link>
             </div>
             <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
               <a

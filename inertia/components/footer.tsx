@@ -17,13 +17,13 @@ export default function Footer() {
             <p className="text-sm font-bold pt-2">No. HP</p>
             <p className="text-sm text-black">+62 877 7682 3017</p>
             <p className="text-sm font-bold pt-2">Email</p>
-            <p className="text-sm text-black">yayasanfokus@gmail.com</p>
+            <p className="text-sm text-black">yayasanfokusbpn@gmail.com</p>
           </div>
           <div>
             <h3 className="text-2xl font-bold pt-2">IKUTI KAMI</h3>
             <div className="pt-2">
               <a
-                href="https://www.instagram.com/yayasan.fokus"
+                href="https://www.instagram.com/forumkreatifusahasamasama"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-black hover:text-red-800"
@@ -44,7 +44,7 @@ export default function Footer() {
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                   <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
                 </svg>
-                <span className="">@FOKUSxD3</span>
+                <span className="">@forumkreatifusahasamasama</span>
               </a>
             </div>
             <div className="pt-2">
