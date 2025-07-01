@@ -35,7 +35,6 @@ COPY --from=build /app /app
 COPY --from=build /app/.env /app
 COPY --from=build /app/.env /app/build
 COPY --from=build /app/inertia /app/build
-RUN chmod +x start.sh refresh.sh
 
 # Setup crontab
 COPY crontab /tmp/crontab
